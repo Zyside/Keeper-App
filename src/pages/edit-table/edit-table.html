@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>edit-table</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let arrKey of arrKeys">
+          {{arrKey.state}}
+        <div *ngFor="let dish of arrKey.dishes">
+          {{dish.name}}
+          {{dish.price}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <ion-input></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

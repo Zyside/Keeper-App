@@ -1,0 +1,4 @@
+<ion-content padding >
+    <tables-component *ngFor="let table of tables;let i = index" (click)="editTable(table)" ngClass="'.table-tables:hover':table.state=='free'">
+    </tables-component>
+</ion-content>

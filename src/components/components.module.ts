@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 
-import { NissanActivityButtonComponent } from './nissan-activity-button/nissan-activity-button';
+import { TablesComponent } from './tables-components/tables.components';
+import {IonicModule} from "ionic-angular";
 
 @NgModule({
-  declarations: [NissanActivityButtonComponent],
-  imports: [],
-  exports: [NissanActivityButtonComponent]
+  declarations: [TablesComponent],
+  imports: [IonicModule],
+  exports: [TablesComponent]
 })
+export class ComponentsModule {}

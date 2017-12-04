@@ -1,3 +1,78 @@
 page-home {
+  .login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+  }
+  .form {
+    position: relative;
+    z-index: 1;
+    background-color:#d73d13;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 55px 55px 35px 55px;
+    text-align: center;
+    box-shadow: 10px 10px 20px 10px rgba(0.1, 0.1, 0.1, 0.4), 0 5px 5px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 5px;
+  }
 
+  .scroll-content {
+    overflow-y: hidden;
+  }
+  .content-md {
+    background-image: url("http://www.eastcheshire.nhs.uk/Images/IMG_5802.JPG ");
+    background-size: cover;
+    color:white;
+    overflow-y:hidden;
+  }
+  .home-logo {
+    width: 150px;
+    height: 100px;
+    margin-bottom: 25px;
+  }
+  .form-span {
+    color:white;
+    margin:10px;
+    width:100%;
+    text-align: left;
+  }
+
+  .form-input-first {
+    border:1px white;
+    color:white;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size:12px;
+    padding: 0px;
+  }
+
+  .form-input-first .text-input::placeholder{
+    color:white;
+  }
+  .form-input .text-input::placeholder{
+    color:white;
+  }
+  .form-input {
+    border:1px white;
+    color:white;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size:12px;
+    padding: 0px;
+  }
+  .form-checkbox {
+    font-size: 12px;
+    padding-top:15px;
+    text-align: left;
+  }
+  .form-button {
+    background-color:#751818;
+    border-radius: 5px;
+  }
+  .form-button:hover:not(.disable-hover) {
+    background-color:#8B0000;
+  }
 }
