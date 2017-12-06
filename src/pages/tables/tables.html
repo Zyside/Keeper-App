@@ -1,4 +1,36 @@
 <ion-content padding >
-    <tables-component *ngFor="let table of tables;let i = index" (click)="editTable(table)" ngClass="'.table-tables:hover':table.state=='free'">
-    </tables-component>
+  <button><ion-icon name="exit" (click)="exit()"></ion-icon></button>
+  <button><ion-icon name="information-circle" (click)="presentProfileModal()"></ion-icon></button>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-2>
+        <ion-card class="active">
+          <ion-card-content (click)="showFree = !showFree" [ngClass]="(showFree === true)?'backgroundShow':''">
+            Зал
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="active">
+          <ion-card-content (click)="showAdmin = !showAdmin" [ngClass]="(showAdmin === true)?'backgroundShow':''">
+            Администрация
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="active">
+          <ion-card-content (click)="showHookah = !showHookah" [ngClass]="(showHookah === true)?'backgroundShow':''">
+            Кальяны
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-10>
+          <div *ngIf="showFree">
+            <tables-component [tableFree]="tablesFree"></tables-component>
+          </div>
+          <div *ngIf="showAdmin">
+            <tables-component [tableAdmin]="tablesAdmin"></tables-component>
+          </div>
+          <div *ngIf="showHookah">
+            <tables-component [tableHookah]="tablesHookah"></tables-component>
+          </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

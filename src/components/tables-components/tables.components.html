@@ -1,4 +1,10 @@
-<div class="tables-tables">
-
+<div class="tables-tables" *ngFor="let item of tablesFree" (click)="editTable(item)">
+  <p class="shadowtext">{{item.name}}</p>
+</div>
+<div class="tables-tables" *ngFor="let item of tablesAdmin" (click)="editTable(item)">
+  <p class="shadowtext">{{item.name}}</p>
+</div>
+<div class="tables-tables" *ngFor="let item of tablesHookah" (click)="editTable(item)">
+  <p class="shadowtext">{{item.name}}</p>
 </div>
 
