@@ -10,16 +10,118 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let arrKey of arrKeys">
-          {{arrKey.state}}
-        <div *ngFor="let dish of arrKey.dishes">
-          {{dish.name}}
-          {{dish.price}}
-        </div>
+      <ion-col col-3>
+        <ion-card>
+          <ion-card-content (click)="showKitchen = !showKitchen">
+            Кухня
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-content  (click)="showBar = !showBar">
+            Бар
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-content (click)="showHookah = !showHookah">
+            Кальяны
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-content>
+            Порча имущества
+          </ion-card-content>
+        </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-input></ion-input>
-      </ion-col>
+
+        <ion-col col-3 >
+          <div *ngIf="showKitchen">
+            <h1>Кухня </h1>
+            <ion-card>
+              <ion-card-content (click)="addItem('japanModel') || (showAlcohol = !showAlcohol)">
+                Япония
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-content (click)="addItem('frenchModel') || (showAlcohol = !showAlcohol)">
+                Франция
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-content (click)="addItem('launchModel') || (showAlcohol = !showAlcohol)">
+                Ланчи
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div *ngIf="showBar">
+            <h1>Бар</h1>
+
+            <ion-card >
+              <ion-card-content (click)="addItem('whiskeyModel') || (showAlcohol = !showAlcohol)">
+                Виски
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-content (click)="addItem('romsModel') || (showAlcohol = !showAlcohol)">
+                Ромы
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-content (click)="addItem('vodkaModel') || (showAlcohol = !showAlcohol)">
+                Водка
+              </ion-card-content>
+            </ion-card>
+          </div>
+
+          <div *ngIf="showHookah">
+            <h1>Кальяны </h1>
+            <ion-card>
+              <ion-card-content>
+                Легкие
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-content>
+                Тяжелые
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-content>
+                премиум
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+
+        <ion-col col-3>
+          <div>
+            <ion-card *ngFor="let show of showArray">
+              <ion-card-header>
+                {{show.name}}
+                <ion-icon name="add-circle" (click)="addToTotalScore(show)"></ion-icon>
+              </ion-card-header>
+              <ion-card-content>
+                Обьем:{{show.volume}}мл, цена: {{show.price}}грн
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+        <ion-col col-3>
+          <div>
+            <ion-card *ngFor="let total of totalScore">
+              <ion-card-header >
+                {{total.name}}
+              </ion-card-header>
+              <ion-card-content>
+                Обьем:{{total.volume}}, цена: {{total.price}}грн
+                <ion-icon name="md-close" (click)="deleteItem(total)"></ion-icon>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+</ion-footer>
