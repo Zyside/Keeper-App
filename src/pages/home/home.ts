@@ -16,9 +16,8 @@ password:any = '';
   constructor(public navCtrl: NavController,
               public http:Http,
               public loading: LoadingController,
-              private loadingService: LoadingService) {
+              private loadingService: LoadingService) {  }
 
-  }
   add(){
     let tempJson = {
       login:this.login,
