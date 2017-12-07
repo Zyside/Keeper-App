@@ -12,17 +12,17 @@
     <ion-row>
       <ion-col col-3>
         <ion-card>
-          <ion-card-content (click)="showKitchen = !showKitchen">
+          <ion-card-content (click)="(showKitchen = !showKitchen)" (click)="test()"  [ngClass]="(showKitchen === true)?'backgroundShow':''">
             Кухня
           </ion-card-content>
         </ion-card>
         <ion-card>
-          <ion-card-content  (click)="showBar = !showBar">
+          <ion-card-content  (click)="showBar = !showBar" (click)="test()" [ngClass]="(showBar === true)?'backgroundShow':''">
             Бар
           </ion-card-content>
         </ion-card>
         <ion-card>
-          <ion-card-content (click)="showHookah = !showHookah">
+          <ion-card-content (click)="showHookah = !showHookah" (click)="test()" [ngClass]="(showHookah === true)?'backgroundShow':''">
             Кальяны
           </ion-card-content>
         </ion-card>
@@ -57,17 +57,17 @@
             <h1>Бар</h1>
 
             <ion-card >
-              <ion-card-content (click)="addItem('whiskeyModel') || (showAlcohol = !showAlcohol)">
+              <ion-card-content (click)="addItem('whiskeyModel')">
                 Виски
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-content (click)="addItem('romsModel') || (showAlcohol = !showAlcohol)">
+              <ion-card-content (click)="addItem('romsModel')">
                 Ромы
               </ion-card-content>
             </ion-card>
             <ion-card>
-              <ion-card-content (click)="addItem('vodkaModel') || (showAlcohol = !showAlcohol)">
+              <ion-card-content (click)="addItem('vodkaModel')">
                 Водка
               </ion-card-content>
             </ion-card>
@@ -124,4 +124,13 @@
 </ion-content>
 
 <ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+      </ion-col>
+      <ion-col col-2>
+        <h1> Cумма: {{getResultPrice()}} </h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>

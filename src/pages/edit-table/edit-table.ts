@@ -1,7 +1,6 @@
 import { ActionSheetController } from 'ionic-angular';
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
 
 @Component({
   selector: 'page-edit-table',
@@ -10,7 +9,6 @@ import { NavController, NavParams } from 'ionic-angular';
 export class EditTablePage {
 
   table: object[];
-
   showBar: boolean = false;
   showHookah:boolean = false;
   showKitchen:boolean = false;
@@ -28,8 +26,6 @@ export class EditTablePage {
               public actionSheetCtrl: ActionSheetController) {
     this.table = this.navParams.get('item');
     console.log('parvm table------>', this.table);
-    this.test();
-    // this.arrKeys.push(this.table);
     this.whiskeys = [
       {
         name: 'Jack Daneils',
@@ -136,20 +132,20 @@ export class EditTablePage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditTablePage');
-  }
 
   addToTotalScore(item) {
     this.totalScore.push(item);
-    for(let j = 0; j < this.totalScore.length; j++){
       this.table['order'] = this.totalScore;
-      console.log('table after pushing',this.table);
-    }
+  }
+
+  getResultPrice() {
+    return this.totalScore.reduce((prev, el) => {
+      return prev + el['price'];
+    }, 0);
   }
 
   deleteItem(value) {
-    console.log(value);
+    console.log('delete Value',value);
     let idx = this.totalScore.indexOf(value);
     if (idx != -1) {
       return this.totalScore.splice(idx, 1);
@@ -190,10 +186,10 @@ export class EditTablePage {
       }
     }
   }
+
   test(){
-    if((this.showHookah = false) && (this.showBar = false) &&  (this.showKitchen = false)){
-      this.showArray = [];
-      console.log('xui',this.showArray);
+    if((this.showHookah === false) && (this.showBar === false) &&  (this.showKitchen === false)){
+      this.showArray.length = 0;
     }
   }
 }
