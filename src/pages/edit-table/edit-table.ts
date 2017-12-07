@@ -192,7 +192,7 @@ export class EditTablePage {
   }
   test(){
     if((this.showHookah = false) && (this.showBar = false) &&  (this.showKitchen = false)){
-      this.showArray.splice(0,this.showArray.length);
+      this.showArray = [];
       console.log('xui',this.showArray);
     }
   }
