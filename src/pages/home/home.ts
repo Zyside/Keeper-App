@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {LoadingController, NavController} from 'ionic-angular';
+import { Http } from "@angular/http";
+import { LoadingController, NavController } from 'ionic-angular';
 import { LoadingService } from "../../providers/loading-service/loading-service";
-import {Http} from "@angular/http";
 import {TablesPage} from "../tables/tables";
 
 @Component({
@@ -9,14 +9,15 @@ import {TablesPage} from "../tables/tables";
   templateUrl: 'home.html'
 })
 export class HomePage {
+
 login:string ='';
 password:any = '';
+
   constructor(public navCtrl: NavController,
               public http:Http,
               public loading: LoadingController,
-              private loadingService: LoadingService) {
+              private loadingService: LoadingService) {  }
 
-  }
   add(){
     let tempJson = {
       login:this.login,

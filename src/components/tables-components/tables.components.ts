@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
-import {NavController, NavParams} from "ionic-angular";
-import {EditTablePage} from "../../pages/edit-table/edit-table";
-
-// import { TablesComponent } from "./tables-components.ts";
+import { NavController } from "ionic-angular";
+import { EditTablePage } from "../../pages/edit-table/edit-table";
 
 @Component({
   selector: 'tables-component',
@@ -10,7 +8,6 @@ import {EditTablePage} from "../../pages/edit-table/edit-table";
 })
 export class TablesComponent {
 
-  @Input('data') data: TablesComponent;
   @Input('tableFree') tablesFree: any;
   @Input('tableAdmin') tablesAdmin: any;
   @Input('tableHookah') tablesHookah: any;
