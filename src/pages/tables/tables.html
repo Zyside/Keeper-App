@@ -5,17 +5,17 @@
     <ion-row>
       <ion-col col-2>
         <ion-card class="active">
-          <ion-card-content (click)="showFree = !showFree" [ngClass]="(showFree === true)?'backgroundShow':''">
+          <ion-card-content (click)="showFree = !showFree; showAdmin=false; showHookah=false" [ngClass]="(showFree === true)?'backgroundShow':''">
             Зал
           </ion-card-content>
         </ion-card>
         <ion-card class="active">
-          <ion-card-content (click)="showAdmin = !showAdmin" [ngClass]="(showAdmin === true)?'backgroundShow':''">
+          <ion-card-content (click)="showAdmin = !showAdmin; showFree=false; showHookah=false" [ngClass]="(showAdmin === true)?'backgroundShow':''">
             Администрация
           </ion-card-content>
         </ion-card>
         <ion-card class="active">
-          <ion-card-content (click)="showHookah = !showHookah" [ngClass]="(showHookah === true)?'backgroundShow':''">
+          <ion-card-content (click)="showHookah = !showHookah; showAdmin=false; showFree=false" [ngClass]="(showHookah === true)?'backgroundShow':''">
             Кальяны
           </ion-card-content>
         </ion-card>
