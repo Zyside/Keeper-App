@@ -11,8 +11,7 @@ import {TotalModalPage} from "../total-modal/total-modal"
   templateUrl: 'tables.html',
 })
 export class TablesPage {
-  showTotal:boolean = false;
-  total: object[];
+
   showFree:boolean = false;
   showAdmin:boolean = false;
   showHookah:boolean = false;
@@ -23,119 +22,115 @@ export class TablesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public loading: LoadingController, private loadingService: LoadingService,
               public modalCtrl: ModalController) {
-    this.total = [
-      {
-      }
-    ];
     this.tablesFree = [
         {
-          name:'стол 1'
+          name:'зал 1'
         },
         {
-          name: 'стол 2'
+          name: 'зал 2'
         },
         {
-          name: 'стол 3'
+          name: 'зал 3'
         },
         {
-          name: 'стол 4'
+          name: 'зал 4'
         },
         {
-          name: 'стол 5'
+          name: 'зал 5'
         },
         {
-          name: 'стол 6'
+          name: 'зал 6'
         },
         {
-          name: 'стол 7'
+          name: 'зал 7'
         },
         {
-          name: 'стол 8'
+          name: 'зал 8'
         },
         {
-          name: 'стол 9'
+          name: 'зал 9'
         },
         {
-          name: 'стол 10'
+          name: 'зал 10'
         },
         {
-          name: 'стол 11'
+          name: 'зал 11'
         },
         {
-          name: 'стол 12'
+          name: 'зал 12'
         },
         {
-          name: 'стол 13'
+          name: 'зал 13'
         },
         {
-          name: 'стол 14'
+          name: 'зал 14'
         },
         {
-          name: 'стол 15'
+          name: 'зал 15'
         },
         {
-          name: 'стол 16'
+          name: 'зал 16'
         },
         {
-          name: 'стол 17'
+          name: 'зал 17'
         },
         {
-          name: 'стол 18'
+          name: 'зал 18'
         }];
       this.tablesHookah = [
         {
-          name: 'стол 1'
+          name: 'кальян 1'
         },
         {
-          name: 'стол 2'
+          name: 'кальян 2'
         },
         {
-          name: 'стол 3'
+          name: 'кальян 3'
         },
         {
-          name: 'стол 4'
+          name: 'кальян 4'
         },
         {
-          name: 'стол 5'
+          name: 'кальян 5'
         },
         {
-          name: 'стол 6'
+          name: 'кальян 6'
         },
         {
-          name: 'стол 7'
+          name: 'кальян 7'
         },
         {
-          name: 'стол 8'
+          name: 'кальян 8'
         },
         {
-          name: 'стол 9'
+          name: 'кальян 9'
         },
         {
-          name: 'стол 10'
+          name: 'кальян 10'
         },
         {
-          name: 'стол 11'
+          name: 'кальян 11'
         },
         {
-          name: 'стол 12'
+          name: 'кальян 12'
         },
         {
-          name: 'стол 13'
+          name: 'кальян 13'
         },
         {
-          name: 'стол 14'
+          name: 'кальян 14'
         },
         {
-          name: 'стол 15'
+          name: 'кальян 15'
         },
         {
-          name: 'стол 16'
+          name: 'кальян 16'
         },
         {
-          name: 'стол 17'
+          name: 'кальян 17'
         },
         {
-          name: 'стол 18'
+          name: 'кальян 18'
         }];
       this.tablesAdmin = [
         {
@@ -168,7 +163,6 @@ export class TablesPage {
     let profileModal = this.modalCtrl.create(TotalModalPage);
     profileModal.present();
   }
-
 
 
 }
