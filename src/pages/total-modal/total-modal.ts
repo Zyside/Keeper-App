@@ -15,7 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TotalModalPage {
 
+  showTotal:boolean = false;
+  table:object[];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.table = this.navParams.get('table');
+    console.log('KOSTYA PUSOR',this.table);
   }
 
   ionViewDidLoad() {

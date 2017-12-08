@@ -1,6 +1,9 @@
 import { ActionSheetController } from 'ionic-angular';
 import {Component} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {TablesPage} from "../tables/tables";
+import {TablesComponent} from "../../components/tables-components/tables.components";
+import {TotalModalPage} from "../total-modal/total-modal";
 
 @Component({
   selector: 'page-edit-table',
@@ -189,9 +192,12 @@ export class EditTablePage {
       this.totalScore.push(item);
     }
     this.table['order'] = this.totalScore;
-    console.log('totalScore', this.totalScore)
     }
 
+    sendToKostya(){
+    this.navCtrl.push(TotalModalPage,{table:this.table});
+      console.log(this.table);
+    }
 
   checkItem(item, array) {
     console.log('check item');

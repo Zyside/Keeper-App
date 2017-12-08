@@ -168,7 +168,4 @@ export class TablesPage {
     let profileModal = this.modalCtrl.create(TotalModalPage);
     profileModal.present();
   }
-
-
-
 }

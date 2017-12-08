@@ -76,6 +76,7 @@
         </ion-col>
         <ion-col col-3>
           <div>
+            <button ion-button (click)="sendToKostya()">Отправить Костянчику инфу про столик</button>
             <ion-card *ngFor="let total of totalScore">
               <ion-card-header >
                 {{total.name}}
