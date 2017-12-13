@@ -8,11 +8,12 @@ import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule} from "@angular/http";
-import { LoadingService } from '../providers/loading-service/loading-service';
+import { LoadingService } from '../services/loading-service';
 import {TablesPage} from "../pages/tables/tables";
 import {ComponentsModule} from "../components/components.module";
 import {EditTablePage} from "../pages/edit-table/edit-table";
 import {TotalModalPage} from "../pages/total-modal/total-modal";
+import {OrderService} from "../services/order.service";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {TotalModalPage} from "../pages/total-modal/total-modal";
     LoadingService,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    OrderService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}

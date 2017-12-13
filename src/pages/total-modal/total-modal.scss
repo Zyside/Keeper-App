@@ -5,4 +5,11 @@ page-total-modal {
   .button {
     font-size: 12px;
   }
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
 }

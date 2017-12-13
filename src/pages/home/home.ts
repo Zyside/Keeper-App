@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from "@angular/http";
 import { LoadingController, NavController } from 'ionic-angular';
-import { LoadingService } from "../../providers/loading-service/loading-service";
+import { LoadingService } from "../../services/loading-service";
 import {TablesPage} from "../tables/tables";
 
 @Component({
@@ -12,11 +12,14 @@ export class HomePage {
 
 login:string ='';
 password:any = '';
-
+status:string = 'hookah';
   constructor(public navCtrl: NavController,
               public http:Http,
               public loading: LoadingController,
-              private loadingService: LoadingService) {  }
+              private loadingService: LoadingService) {
+    console.log(this.status);
+
+  }
 
   add(){
     let tempJson = {
@@ -26,7 +29,7 @@ password:any = '';
     if ((this.login.trim() !== '' || this.password.trim() !== '') && (this.login.trim() !== '' && this.password.trim() !== '')){
       this.loadingService.showLoading();
       // this.http.post('http://192.168.31.35:3000/login', tempJson).subscribe(data=>{
-        this.navCtrl.push(TablesPage,
+        this.navCtrl.push(TablesPage, {status:this.status}
           // {userToken:data.json().token}
           );
       // });

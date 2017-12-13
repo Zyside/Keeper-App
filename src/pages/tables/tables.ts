@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {LoadingController, ModalController} from 'ionic-angular';
-import { LoadingService } from "../../providers/loading-service/loading-service";
+import { LoadingService } from "../../services/loading-service";
 import { NavController, NavParams } from 'ionic-angular';
 import {EditTablePage} from "../edit-table/edit-table";
 import {HomePage} from "../home/home";
@@ -13,15 +13,24 @@ import {TotalModalPage} from "../total-modal/total-modal"
 export class TablesPage {
 
   showFree:boolean = false;
+  status:string;
   showAdmin:boolean = false;
   showHookah:boolean = false;
   tablesFree: object[];
   tablesHookah: object[];
   tablesAdmin: object[];
 
+  showTableForAdmins:boolean = false;
+  showTableForHookah:boolean = false;
+  showTableForWaiters:boolean = false;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public loading: LoadingController, private loadingService: LoadingService,
               public modalCtrl: ModalController) {
+    this.status = this.navParams.get('status');
+    console.log(this.status);
+    this.showingStuff();
     this.tablesFree = [
         {
           name:'зал 1'
@@ -162,5 +171,16 @@ export class TablesPage {
   presentProfileModal() {
     let profileModal = this.modalCtrl.create(TotalModalPage);
     profileModal.present();
+  }
+  showingStuff(){
+    if(this.status ==='admin'){
+      this.showTableForAdmins =  true;
+      this.showTableForWaiters = true;
+      this.showTableForHookah = true;
+    } else if (this.status === 'hookah'){
+      this.showTableForHookah = true;
+    } else if (this.status === 'waiier'){
+      this.showTableForWaiters = true;
+    }
   }
 }

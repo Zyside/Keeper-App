@@ -12,17 +12,17 @@
     <ion-row>
       <ion-col col-3>
         <ion-card>
-          <ion-card-content (click)="(showKitchen = !showKitchen); showBar = false; showHookah = false" (click)="test()"  [ngClass]="(showKitchen === true)?'backgroundShow':''">
+          <ion-card-content (click)="(showKitchen = !showKitchen); showBar = false; showHookah = false" (click)="hideMenu()"  [ngClass]="(showKitchen === true)?'backgroundShow':''">
             Кухня
           </ion-card-content>
         </ion-card>
         <ion-card>
-          <ion-card-content  (click)="showBar = !showBar; showKitchen = false; showHookah = false" (click)="test()" [ngClass]="(showBar === true)?'backgroundShow':''">
+          <ion-card-content  (click)="showBar = !showBar; showKitchen = false; showHookah = false" (click)="hideMenu()" [ngClass]="(showBar === true)?'backgroundShow':''">
             Бар
           </ion-card-content>
         </ion-card>
         <ion-card>
-          <ion-card-content (click)="showHookah = !showHookah ; showBar = false; showKitchen = false" (click)="test()" [ngClass]="(showHookah === true)?'backgroundShow':''">
+          <ion-card-content (click)="showHookah = !showHookah ; showBar = false; showKitchen = false" (click)="hideMenu()" [ngClass]="(showHookah === true)?'backgroundShow':''">
             Кальяны
           </ion-card-content>
         </ion-card>
@@ -69,23 +69,24 @@
                 {{show.name}}
               </ion-card-header>
               <ion-card-content>
-                Количество:{{show.count}}, цена: {{show.price}}грн
+                цена: {{show.price}}грн
               </ion-card-content>
             </ion-card>
           </div>
         </ion-col>
         <ion-col col-3>
           <div>
-            <button ion-button (click)="sendToKostya()">Отправить Костянчику инфу про столик</button>
+            <button ion-button (click)="sendToTotalModal()">Отправить</button>
             <ion-card *ngFor="let total of totalScore">
               <ion-card-header >
                 {{total.name}}
                 <ion-icon name="md-close-circle" (click)="deleteItem(total)"></ion-icon>
               </ion-card-header>
               <ion-card-content>
-                Количество:{{total.count}}
-                <!--<ion-input type="number" [(ngModel)]="totalCount" onsubmit="changeCount(total)"></ion-input>-->
+                Количество:
+                <input [(ngModel)]="total.count" (keyup)="xui(total)" type="number">
                 цена: {{total.price}}грн
+                сумма: {{total.sum}} грн
                 <ion-icon name="md-backspace" (click)="removeItem(total)"></ion-icon>
               </ion-card-content>
             </ion-card>

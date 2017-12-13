@@ -28,6 +28,7 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
+      <ion-col col-9>
         <ion-col col-3>
           <div *ngIf="showTotal">
             <button ion-button>Открытые</button>
@@ -35,10 +36,60 @@
             <button ion-button>Повторная печать</button>
           </div>
         </ion-col>
-      <ion-col col-6>
+        <ion-col col-6>
+          <div *ngIf="showTotal">
 
+              <table style="width:100%;border:1px">
+                <tr>
+                  <th>Имя</th>
+                  <th>№ Заказа</th>
+                  <th>№ Стола</th>
+                  <th>Время</th>
+                  <th>Сумма</th>
+                </tr>
+                  <tr *ngFor="let data of dataArr;let i = index" (click)="showInfoAboutOrder(data)">
+                    <td>Jill</td>
+                    <td>{{i+1}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.time | date:'short'}}</td>
+                    <td>{{data.sum}} грн</td>
+                  </tr>
+              </table>
+          </div>
+        </ion-col>
       </ion-col>
     </ion-row>
   </ion-grid>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 >
+        <table style="width:100%;border:1px">
+          <tr>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Сумма</th>
+            <th>Количество</th>
+          </tr>
+          <tr *ngFor="let item of orderArray">
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.sum}}</td>
+            <td>{{item.count}}</td>
+          </tr>
+        </table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8>
+      </ion-col>
+      <ion-col col-4>
+        <h1> Cумма: {{sum}} </h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
