@@ -3,6 +3,7 @@ import { Http } from "@angular/http";
 import { LoadingController, NavController } from 'ionic-angular';
 import { LoadingService } from "../../services/loading-service";
 import {TablesPage} from "../tables/tables";
+import {OrderService} from "../../services/order.service";
 
 @Component({
   selector: 'page-home',
@@ -16,9 +17,10 @@ status:string = 'hookah';
   constructor(public navCtrl: NavController,
               public http:Http,
               public loading: LoadingController,
-              private loadingService: LoadingService) {
+              private loadingService: LoadingService,
+              private orderService:OrderService) {
     console.log(this.status);
-
+    this.orderService.addStatus(this.status);
   }
 
   add(){

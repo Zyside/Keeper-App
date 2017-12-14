@@ -5,6 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {EditTablePage} from "../edit-table/edit-table";
 import {HomePage} from "../home/home";
 import {TotalModalPage} from "../total-modal/total-modal"
+import {OrderService} from "../../services/order.service";
 
 @Component({
   selector: 'page-tables',
@@ -27,7 +28,8 @@ export class TablesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public loading: LoadingController, private loadingService: LoadingService,
-              public modalCtrl: ModalController) {
+              public modalCtrl: ModalController,
+              private orderService:OrderService) {
     this.status = this.navParams.get('status');
     console.log(this.status);
     this.showingStuff();

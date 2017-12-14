@@ -13,6 +13,8 @@ import {OrderService} from "../../services/order.service";
 })
 export class EditTablePage {
 
+  xuila:boolean = true;
+
   table: object[];
   totalCount:number;
   showBar: boolean = false;
@@ -208,31 +210,46 @@ export class EditTablePage {
 
 
   addToTotalScore(linkItem) {
-    console.log(linkItem);
+    console.log(linkItem, 'LINKITEM');
     let item = JSON.parse(JSON.stringify(linkItem))
     let index = this.checkItem(item, this.totalScore);
-    console.log(index)
-    if  (index!==-1) {
-      // this.totalScore[index]['count'] = this.totalCount;
-      console.log(this.totalCount, 'xui');
-      this.totalScore[index]['count'] += 1;``
-
-      this.totalScore[index]['sum'] += item['price'];
-    } else {
+    console.log(index, 'hjkjl')
+    if (index !== -1) {
+      if (this.totalScore[index]['status'] === undefined) {
+        this.totalScore[index]['count'] += 1;
+        this.totalScore[index]['sum'] += item['price'];
+      } else {
+        this.totalScore.push(item);
+      }
+   } else {
       this.totalScore.push(item);
     }
-    console.log(this.orderService);
+    console.log(this.totalScore,'TOTALSCORE');
   }
 
+
+
     sendToTotalModal(){
-      // console.log(this.totalScore);
+    if(this.table['status'] ==='admin'){
+      for(let key in this.totalScore) {
+        this.totalScore[key]['status'] = true;
+      }
+    } else {
+      for (let key in this.totalScore) {
+        console.log(this.totalScore[key], 'KEY');
+        this.totalScore[key]['status'] = false;
+      }
       let table = Object.assign({}, this.table);
-      let totalScore = Object.assign({}, this.totalScore)
+      let totalScore = Object.assign({}, this.totalScore);
       console.log(this.table, 'Table');
       table['time'] = new Date();
       table['sum'] = this.getResultPrice();
       table['order'] = totalScore;
       this.orderService.addData(table);
+      console.log(this.totalScore, 'KEYAFTERFALSE');
+      console.log(this.table, 'status');
+
+    }
     }
 
 
@@ -241,8 +258,8 @@ export class EditTablePage {
     for(let i=0; i<array.length; i++){
       console.log('length', array.length)
       console.log('i', i)
-      if (array[i].name === item.name){
-        return i
+      if (array[i].status === undefined && array[i].name === item.name){
+        return i;
       }
     }
     return -1
@@ -263,13 +280,21 @@ export class EditTablePage {
   removeItem(item){
     console.log('delete Value',item);
     if((item['price'] != 0) && (item['count'] != 0) &&(item['price'] != 1) && (item['count'] != 1)){
-      item['sum'] -= item['price'];
-      item['count'] -= 1;
+      for (let key in this.totalScore) {
+        if (this.totalScore[key]['status'] === false) {
+          item['sum'] = item['sum'];
+          item['count'] = item['count'];
+        }else {
+          item['sum'] -= item['price'];
+          item['count'] -= 1;
+        }
+      }
+
       // console.log('remove item', item);
       // console.log(this.totalScore);
-    } else if (item['count'] <= 1){
+    } else if (item['count'] <= 1) {
       this.deleteItem(item);
-      }
+    }
     }
 
 
@@ -279,14 +304,14 @@ export class EditTablePage {
     }, 0);
   }
 
-  deleteItem(value) {
-    let idx = this.totalScore.indexOf(value);
+  deleteItem(item) {
+    let idx = this.totalScore.indexOf(item);
     if (idx != -1) {
-      return this.totalScore.splice(idx, 1);
+        if (item['status'] !== false) {
+          this.totalScore.splice(idx, 1);
+        }
     }
-    return false;
   }
-
   addAlcohol(item: string) {
     this.showArray = this.alcohol[item];
   }
@@ -309,7 +334,6 @@ export class EditTablePage {
     console.log(this.totalScore[this.totalScore.indexOf(item)]['count']);
     item.sum = this.totalScore[this.totalScore.indexOf(item)]['price'] * item.count;
     console.log(this.totalScore);
-
   }
 }
 
